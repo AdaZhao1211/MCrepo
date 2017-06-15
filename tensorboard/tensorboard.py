@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""A simple MNIST classifier which displays summaries in TensorBoard.
+"""
+@Ada Zhao
+http://www.adazhao.com
+A simple MNIST classifier which displays summaries in TensorBoard.
 
  This is an unimpressive MNIST model, but it is a good example of using
 tf.name_scope to make a graph legible in the TensorBoard graph explorer, and of
@@ -137,7 +140,6 @@ def train():
 
   # Merge all the summaries and write them out to /tmp/tensorflow/mnist/logs/mnist_with_summaries (by default)
   merged = tf.summary.merge_all()
-  print(FLAGS.log_dir)
   train_writer = tf.summary.FileWriter(FLAGS.log_dir + '/train', sess.graph)
   test_writer = tf.summary.FileWriter(FLAGS.log_dir + '/test')
   tf.global_variables_initializer().run()
@@ -180,8 +182,6 @@ def train():
 
 
 def main(_):
-  #print(FLAGS)
-  #print(FLAGS.log_dir)
   if tf.gfile.Exists(FLAGS.log_dir):
     tf.gfile.DeleteRecursively(FLAGS.log_dir)
   tf.gfile.MakeDirs(FLAGS.log_dir)
@@ -201,7 +201,7 @@ if __name__ == '__main__':
                       help='Keep probability for training dropout.')
   parser.add_argument('--data_dir', type=str, default=sys.path[0]+'/input_data',
                       help='Directory for storing input data')
-  parser.add_argument('--log_dir', type=str, default=sys.path[0]+'/logs/mnist_with_summaries',
+  parser.add_argument('--log_dir', type=str, default=sys.path[0]+'/logs',
                       help='Summaries log directory')
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
